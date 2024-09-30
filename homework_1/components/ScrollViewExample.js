@@ -7,7 +7,7 @@ const ScrollViewExample = () => {
             <View style={styles.container}>
                 <Text style={styles.header}>Современная Архитектура: Вдохновение и Инновации</Text>
                 <Image
-                    source={{ require: './assets/images/favicon.png' }}
+                    source={ require('../assets/images/favicon.png')}
                     style={styles.image}
                 />
                 <Text style={styles.content}>

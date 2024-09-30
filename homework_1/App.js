@@ -2,7 +2,8 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import ScrollViewExample from './components/ScrollViewExample'; // Импорт компонента ScrollView
 import GridExample from './components/GridExample';           // Импорт компонента Grid
-import ListExample from './components/ListExample';           // Импорт компонента List
+import ListExample from './components/ListExample';
+import HorizontalScroll from "./components/HorizontalScroll";           // Импорт компонента List
 
 const App = () => {
     return (
@@ -10,6 +11,7 @@ const App = () => {
             <ScrollViewExample />
             <GridExample />
             <ListExample />
+            <HorizontalScroll/>
         </SafeAreaView>
     );
 };

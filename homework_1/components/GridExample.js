@@ -6,21 +6,21 @@ const GridExample = () => {
         <View style={styles.gridContainer}>
             <View style={styles.item}>
                 <Image
-                    source={{ require: './assets/images/image1.jpg' }}
+                    source={require('../assets/images/image1.jpg')} // Исправлено здесь
                     style={styles.image}
                 />
                 <Text style={styles.itemText}>Изображение 1. Инновационные технологии в строительстве</Text>
             </View>
             <View style={styles.item}>
                 <Image
-                    source={{ require: './assets/images/image2.jpg' }}
+                    source={require('../assets/images/image2.jpg')} // Исправлено здесь
                     style={styles.image}
                 />
                 <Text style={styles.itemText}>Изображение 2. Устойчивый дизайн: будущее архитектуры</Text>
             </View>
             <View style={styles.item}>
                 <Image
-                    source={{ require: './assets/images/image3.jpg' }}
+                    source={require('../assets/images/image3.jpg')} // Исправлено здесь
                     style={styles.image}
                 />
                 <Text style={styles.itemText}>Изображение 3. Культовые здания современности</Text>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 70,
+        height: 100,
     },
     itemText: {
         textAlign: 'center',
@@ -51,3 +51,4 @@ const styles = StyleSheet.create({
 });
 
 export default GridExample;
+
