@@ -13,9 +13,9 @@ const App = () => {
             <LoginScreen />
             <PasswordInput />
             <View style={styles.boxContainer}>
-                <Box width={150} height={50} color="red" />
-                <Box width={200} height={100} color="green" />
-                <Box width={80} height={80} color="blue" />
+                <Box width={100} height={100} color="red" />
+                <Box width={100} height={100} color="green" />
+                <Box width={100} height={100} color="blue" />
             </View>
         </SafeAreaView>
     );

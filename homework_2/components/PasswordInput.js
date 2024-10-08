@@ -20,18 +20,34 @@ const PasswordInput = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        padding: 20,
         alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f9f9f9',
     },
     input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 10,
+        borderWidth: 2,
+        borderColor: '#4A90E2',
+        padding: 15,
         width: '80%',
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        fontSize: 16,
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
     },
     inputValue: {
         fontSize: 18,
         marginBottom: 10,
+        color: '#333',
+        fontWeight: 'bold',
+    },
+    infoText: {
+        marginTop: 10,
+        fontSize: 14,
+        color: '#4A90E2',
     },
 });
 

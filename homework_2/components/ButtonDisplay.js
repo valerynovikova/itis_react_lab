@@ -31,30 +31,43 @@ const ButtonDisplay = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 5,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 150,
+        padding: 20,
+        backgroundColor: '#f9f9f9',
     },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
-        padding: 10,
-        width: '80%',
-        borderRadius: 5,
+        padding: 15,
+        width: '90%',
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        fontSize: 16,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 2,
     },
     button: {
         backgroundColor: '#4285F4',
-        padding: 70,
-        borderRadius: 5,
+        padding: 15,
+        borderRadius: 10,
+        marginTop: 10,
+        width: '90%',
+        alignItems: 'center',
     },
     buttonText: {
         color: '#fff',
         fontWeight: 'bold',
+        fontSize: 16,
     },
     visibleValue: {
         fontSize: 16,
         marginTop: 10,
+        color: '#333',
     },
 });
 
