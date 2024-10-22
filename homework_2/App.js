@@ -1,40 +1,114 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import ButtonWithLimit from './components/ButtonWithLimit';
-import PasswordInput from './components/PasswordInput';
-import ButtonDisplay from './components/ButtonDisplay';
-import LoginScreen from './components/LoginScreen';
+import { Button, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
 
-const App = () => {
+// Экраны для Home Stack
+const HomeScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
-            <ButtonWithLimit />
-            <ButtonDisplay />
-            <LoginScreen />
-            <PasswordInput />
-            <View style={styles.boxContainer}>
-                <Box width={100} height={100} color="red" />
-                <Box width={100} height={100} color="green" />
-                <Box width={100} height={100} color="blue" />
-            </View>
-        </SafeAreaView>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Home Screen</Text>
+        </View>
     );
 };
 
-export const Box = (props) => (
-    <View style={{ width: props.width, height: props.height, backgroundColor: props.color }} />
+const HomeAboutScreen = () => {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>About the App</Text>
+        </View>
+    );
+};
+
+// Другие экраны табов
+const NewsScreen = () => (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>News Screen</Text>
+    </View>
 );
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f0f0f0',
-    },
-    boxContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 20,
-    },
-});
+const ChatScreen = () => (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Chat Screen</Text>
+    </View>
+);
 
-export default App;
+const SettingsScreen = () => (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings Screen</Text>
+    </View>
+);
+
+// Создание стека для Home
+const Stack = createNativeStackNavigator();
+const HomeStack = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={({ navigation }) => ({
+                    title: '',
+                    headerLeft: () => (
+                        <Ionicons name="home" size={24} color="black" style={{ marginLeft: 10 }} />
+                    ),
+                    headerRight: () => (
+                        <Button
+                            onPress={() => navigation.navigate('HomeAbout')}
+                            title="О приложении"
+                        />
+                    ),
+                })}
+            />
+            <Stack.Screen
+                name="HomeAbout"
+                component={HomeAboutScreen}
+                options={{ title: 'О приложении' }}
+            />
+        </Stack.Navigator>
+    );
+};
+
+// Табы навигации
+const Tab = createBottomTabNavigator();
+
+const TabNavigation = () => {
+    return (
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ color, size }) => {
+                    let iconName: string;
+
+                    if (route.name === 'Home') {
+                        iconName = 'home';
+                    } else if (route.name === 'News') {
+                        iconName = 'newspaper-outline';
+                    } else if (route.name === 'Chat') {
+                        iconName = 'chatbubble-outline';
+                    } else if (route.name === 'Settings') {
+                        iconName = 'settings-outline';
+                    }
+
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: 'blue',
+                tabBarInactiveTintColor: 'gray',
+            })}
+        >
+            <Tab.Screen name="Home" component={HomeStack} options={{ title: 'Home', headerShown: false }} />
+            <Tab.Screen name="News" component={NewsScreen} />
+            <Tab.Screen name="Chat" component={ChatScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+        </Tab.Navigator>
+    );
+};
+
+export default function App() {
+    return (
+        <NavigationContainer independent={true}>
+            <TabNavigation />
+        </NavigationContainer>
+    );
+}
