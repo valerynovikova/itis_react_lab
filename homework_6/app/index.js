@@ -1,13 +1,20 @@
-// Index.js
 import React, { useEffect } from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, StyleSheet, Button } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import accountStore from '../stores/AccountStore';
 
 const Index = observer(() => {
     useEffect(() => {
-        accountStore.fetchAccounts();
+        accountStore.loadAccountsFromStorage();
     }, []);
+
+    const fetchAccounts = () => {
+        accountStore.fetchAccounts();
+    };
+
+    const clearAccounts = () => {
+        accountStore.clearAccounts();
+    };
 
     if (accountStore.loading) {
         return (
@@ -27,6 +34,8 @@ const Index = observer(() => {
 
     return (
         <View style={styles.container}>
+            <Button title="Fetch Accounts" onPress={fetchAccounts} />
+            <Button title="Clear Accounts" onPress={clearAccounts} />
             <FlatList
                 data={accountStore.accounts}
                 keyExtractor={item => item.id.toString()}
